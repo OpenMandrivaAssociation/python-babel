@@ -1,6 +1,6 @@
 %define tarname	Babel
 %define name	python-babel
-%define version 0.9.5
+%define version 0.9.6
 %define release %mkrel 1
 
 Summary:	Internationalization utilities for Python
