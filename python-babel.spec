@@ -1,17 +1,13 @@
 %define tarname	Babel
-%define name	python-babel
-%define version 0.9.6
-%define release %mkrel 1
 
 Summary:	Internationalization utilities for Python
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		python-babel
+Version:	0.9.6
+Release:	2
 Source0:	http://ftp.edgewall.com/pub/babel/%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 
@@ -24,13 +20,21 @@ applications (in particular web-based applications.)
 %setup -q -n %{tarname}-%{version}
 
 %install
-%__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
 mv doc html
-
-%clean
-%__rm -rf %{buildroot}
+sed -i 's/.*egg-info$//' FILE_LIST
 
 %files -f FILE_LIST
-%defattr(-,root,root)
 %doc ChangeLog COPYING README.txt html/
+
+
+%changelog
+* Thu Apr 21 2011 Lev Givon <lev@mandriva.org> 0.9.6-1mdv2011.0
++ Revision: 656497
+- Update to 0.9.6.
+
+* Tue Nov 09 2010 Lev Givon <lev@mandriva.org> 0.9.5-1mdv2011.0
++ Revision: 595336
+- import python-babel
+
+
