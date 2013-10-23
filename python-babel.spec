@@ -2,8 +2,8 @@
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	0.9.6
-Release:	3
+Version:	1.3
+Release:	1
 Source0:	http://ftp.edgewall.com/pub/babel/%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
@@ -21,7 +21,6 @@ applications (in particular web-based applications.)
 %package -n python3-babel
 Summary:        Python package implementing YAML parser and emitter
 Group:          Development/Python
-BuildRequires:  python-setuptools
 Requires:       python3
  
 %description -n python3-babel
@@ -37,22 +36,20 @@ cp -r python2 python3
 
 %install
 pushd python2
-mv doc html
 %{__python} setup.py install --root=%{buildroot}
 popd
 
 pushd python3
-mv doc html
 %{__python3} setup.py install --root=%{buildroot}
 popd
 
 %files -n python-babel 
 %{_bindir}/pybabel
-%doc python2/ChangeLog python2/COPYING python2/README.txt python2/html/
+%doc python2/docs/
 %{python_sitelib}/babel
 %{python_sitelib}/*.egg-info
 
 %files -n python3-babel
-%doc python3/ChangeLog python3/COPYING python3/README.txt python3/html/
+%doc python3/docs/
 %{python3_sitelib}/babel
 %{python3_sitelib}/*.egg-info
