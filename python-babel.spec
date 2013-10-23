@@ -3,38 +3,56 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	0.9.6
-Release:	2
+Release:	3
 Source0:	http://ftp.edgewall.com/pub/babel/%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
 BuildArch:	noarch
-BuildRequires:	python-setuptools
+BuildRequires:	python3-distribute
+BuildRequires:	python-distribute
+BuildRequires:	python3-devel
 
 %description
 Babel is a Python library that provides an integrated collection of
 utilities that assist with internationalizing and localizing Python
 applications (in particular web-based applications.)
 
+%package -n python3-babel
+Summary:        Python package implementing YAML parser and emitter
+Group:          Development/Python
+BuildRequires:  python-setuptools
+Requires:       python3
+ 
+%description -n python3-babel
+Babel is a Python library that provides an integrated collection of
+utilities that assist with internationalizing and localizing Python
+applications (in particular web-based applications.)
+
 %prep
-%setup -q -n %{tarname}-%{version}
+%setup -q -c
+
+mv %{tarname}-%{version} python2
+cp -r python2 python3
 
 %install
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+pushd python2
 mv doc html
-sed -i 's/.*egg-info$//' FILE_LIST
+%{__python} setup.py install --root=%{buildroot}
+popd
 
-%files -f FILE_LIST
-%doc ChangeLog COPYING README.txt html/
+pushd python3
+mv doc html
+%{__python3} setup.py install --root=%{buildroot}
+popd
 
+%files -n python-babel 
+%{_bindir}/pybabel
+%doc python2/ChangeLog python2/COPYING python2/README.txt python2/html/
+%{python_sitelib}/babel
+%{python_sitelib}/*.egg-info
 
-%changelog
-* Thu Apr 21 2011 Lev Givon <lev@mandriva.org> 0.9.6-1mdv2011.0
-+ Revision: 656497
-- Update to 0.9.6.
-
-* Tue Nov 09 2010 Lev Givon <lev@mandriva.org> 0.9.5-1mdv2011.0
-+ Revision: 595336
-- import python-babel
-
-
+%files -n python3-babel
+%doc python3/ChangeLog python3/COPYING python3/README.txt python3/html/
+%{python3_sitelib}/babel
+%{python3_sitelib}/*.egg-info
