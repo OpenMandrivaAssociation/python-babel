@@ -3,7 +3,7 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	1.3
-Release:	1
+Release:	2
 Source0:	http://ftp.edgewall.com/pub/babel/%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
