@@ -9,9 +9,11 @@ License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
 BuildArch:	noarch
-BuildRequires:	python3-distribute
 BuildRequires:	python-distribute
-BuildRequires:	python3-devel
+BuildRequires:	python2-distribute
+BuildRequires:	python-setuptools
+BuildRequires:	python2-setuptools
+BuildRequires:	python2-devel
 
 %description
 Babel is a Python library that provides an integrated collection of
