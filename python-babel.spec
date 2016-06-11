@@ -1,10 +1,10 @@
-%define tarname	Babel
+%define tarname	babel
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	2.2.0
+Version:	2.3.4
 Release:	1
-Source0:	https://github.com/python-babel/babel/releases/download/%{version}/%{tarname}-%{version}.tar.gz
+Source0:	https://github.com/python-babel/babel/archive/%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
