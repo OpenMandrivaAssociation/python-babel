@@ -15,6 +15,8 @@ BuildRequires:	python2-distribute
 BuildRequires:	python-setuptools
 BuildRequires:	python2-setuptools
 BuildRequires:	python2-devel
+BuildRequires:	python-pytz
+BuildRequires:	python2-pytz
 
 %description
 Babel is a Python library that provides an integrated collection of
