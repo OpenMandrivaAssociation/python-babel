@@ -3,7 +3,7 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	2.3.4
-Release:	2
+Release:	3
 Source0:	https://github.com/python-babel/babel/archive/%{version}.tar.gz
 Source1:	http://unicode.org/Public/cldr/28/core.zip
 License:	BSD
