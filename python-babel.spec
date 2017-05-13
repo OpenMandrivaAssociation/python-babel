@@ -2,10 +2,10 @@
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	2.3.4
-Release:	3
-Source0:	https://github.com/python-babel/babel/archive/%{version}.tar.gz
-Source1:	http://unicode.org/Public/cldr/28/core.zip
+Version:	2.4.0
+Release:	1
+Source0:	https://github.com/python-babel/babel/archive/v%{version}.tar.gz
+Source1:	http://unicode.org/Public/cldr/29/core.zip
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
@@ -37,7 +37,7 @@ applications (in particular web-based applications.)
 %setup -q -c
 
 mv %{tarname}-%{version} python2
-ln -s %{SOURCE1} python2/cldr/core-28.zip
+ln -s %{SOURCE1} python2/cldr/core-29.zip
 cp -r python2 python3
 
 %install
