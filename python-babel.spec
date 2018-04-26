@@ -13,6 +13,8 @@ BuildArch:	noarch
 BuildRequires:	python-distribute
 BuildRequires:	python2-distribute
 BuildRequires:	python-setuptools
+BuildRequires:	python-pkg-resources
+BuildRequires:	python2-pkg-resources
 BuildRequires:	python2-setuptools
 BuildRequires:	python2-devel
 BuildRequires:	python-pytz
