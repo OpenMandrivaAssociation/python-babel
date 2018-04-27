@@ -3,7 +3,7 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	2.5.3
-Release:	1
+Release:	2
 Source0:	https://github.com/python-babel/babel/archive/v%{version}.tar.gz
 Source1:	http://unicode.org/Public/cldr/29/core.zip
 License:	BSD
@@ -20,6 +20,8 @@ BuildRequires:	python2-devel
 BuildRequires:	python-pytz
 BuildRequires:	python2-pytz
 
+Requires:       python-pytz
+
 %description
 Babel is a Python library that provides an integrated collection of
 utilities that assist with internationalizing and localizing Python
@@ -29,6 +31,7 @@ applications (in particular web-based applications.)
 Summary:        Python package implementing YAML parser and emitter
 Group:          Development/Python
 Requires:       python3
+Requires:       python2-pytz
  
 %description -n python2-babel
 Babel is a Python library that provides an integrated collection of
