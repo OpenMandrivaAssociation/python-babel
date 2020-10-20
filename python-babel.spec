@@ -5,13 +5,12 @@ Name:		python-babel
 Version:	2.8.0
 Release:	2
 Source0:	https://github.com/python-babel/babel/archive/v%{version}.tar.gz
-Source1:	http://unicode.org/Public/cldr/29/core.zip
+%define cldrversion 36
+Source1:	http://unicode.org/Public/cldr/%{cldrversion}/core.zip
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
 BuildArch:	noarch
-BuildRequires:	python-distribute
-BuildRequires:	python2-distribute
 BuildRequires:	python-setuptools
 BuildRequires:	python-pkg-resources
 BuildRequires:	python2-pkg-resources
@@ -42,7 +41,7 @@ applications (in particular web-based applications.)
 %setup -q -c
 
 mv %{tarname}-%{version} python2
-ln -s %{SOURCE1} python2/cldr/core-29.zip
+ln -s %{SOURCE1} python2/cldr/cldr-core-%{cldrversion}.zip
 cp -r python2 python3
 
 %install
@@ -52,6 +51,7 @@ pushd python2
 popd
 
 pushd python3
+sed -i -e 's,getiterator,iter,g;s,\.getchildren(),,g' scripts/import_cldr.py
 %{__python} setup.py import_cldr
 %{__python} setup.py install --root=%{buildroot}
 popd
