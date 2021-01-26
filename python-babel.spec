@@ -2,7 +2,7 @@
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	2.8.1
+Version:	2.9.0
 Release:	1
 Source0:	https://github.com/python-babel/babel/archive/v%{version}.tar.gz
 %define cldrversion 36
