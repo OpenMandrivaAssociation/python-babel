@@ -1,12 +1,12 @@
-%define tarname	babel
+%define tarname	Babel
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	2.9.1
-Release:	2
-Source0:	https://github.com/python-babel/babel/archive/%{tarname}-%{version}.tar.gz
-%define cldrversion 37
-Source1:	http://unicode.org/Public/cldr/%{cldrversion}/core.zip
+Version:	2.10.3
+Release:	1
+Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{version}.tar.gz
+%define cldrversion 41.0
+Source1:	http://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
 License:	BSD
 Group:		Development/Python
 Url:		http://babel.edgewall.org/
@@ -23,7 +23,8 @@ applications (in particular web-based applications.)
 
 %prep
 %autosetup -p1 -n %{tarname}-%{version}
-ln -s %{SOURCE1} cldr/cldr-core-%{cldrversion}.zip
+mkdir cldr
+ln -s %{SOURCE1} cldr/cldr-common-%{cldrversion}.zip
 
 %install
 sed -i -e 's,getiterator,iter,g;s,\.getchildren(),,g' scripts/import_cldr.py
