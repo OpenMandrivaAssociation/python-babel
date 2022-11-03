@@ -2,7 +2,7 @@
 
 Summary:	Internationalization utilities for Python
 Name:		python-babel
-Version:	2.10.3
+Version:	2.11.0
 Release:	1
 Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{version}.tar.gz
 %define cldrversion 41.0
