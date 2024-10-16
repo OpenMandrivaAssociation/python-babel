@@ -9,7 +9,7 @@ Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{ver
 Source1:	http://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
 License:	BSD
 Group:		Development/Python
-Url:		http://babel.edgewall.org/
+Url:		https://babel.edgewall.org/
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 BuildRequires:	python-pkg-resources
