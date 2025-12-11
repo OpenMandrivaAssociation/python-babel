@@ -3,7 +3,7 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	2.17.0
-Release:	1
+Release:	2
 Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{version}.tar.gz
 %define cldrversion 44.0
 Source1:	http://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
@@ -11,9 +11,9 @@ License:	BSD
 Group:		Development/Python
 Url:		https://babel.edgewall.org/
 BuildArch:	noarch
-BuildRequires:	python-setuptools
+BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python-pkg-resources
-BuildRequires:	python-pytz
+BuildRequires:	python%{pyver}dist(pytz)
 Requires:       python-pytz
 
 %description
