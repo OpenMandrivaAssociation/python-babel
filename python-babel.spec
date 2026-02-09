@@ -5,8 +5,8 @@ Name:		python-babel
 Version:	2.18.0
 Release:	1
 Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{version}.tar.gz
-%define cldrversion 46.0
-Source1:	http://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
+%define cldrversion 47
+Source1:	https://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
 License:	BSD
 Group:		Development/Python
 Url:		https://babel.edgewall.org/
@@ -25,6 +25,7 @@ applications (in particular web-based applications.)
 %autosetup -p1 -n %{tarname}-%{version}
 mkdir cldr
 ln -s %{SOURCE1} cldr/cldr-common-%{cldrversion}.zip
+ln -s %{SOURCE1} cldr/cldr-common-%{cldrversion}.0.zip
 
 %install
 sed -i -e 's,getiterator,iter,g;s,\.getchildren(),,g' scripts/import_cldr.py
