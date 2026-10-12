@@ -3,37 +3,29 @@
 Summary:	Internationalization utilities for Python
 Name:		python-babel
 Version:	2.18.0
-Release:	1
+Release:	2
 Source0:	https://files.pythonhosted.org/packages/source/B/Babel/%{tarname}-%{version}.tar.gz
-%define cldrversion 47
-Source1:	https://unicode.org/Public/cldr/%(echo %{cldrversion}|cut -d. -f1)/cldr-common-%{cldrversion}.zip
-License:	BSD
+License:	BSD-3-Clause
 Group:		Development/Python
-Url:		https://babel.edgewall.org/
+Url:		https://babel.pocoo.org/
 BuildArch:	noarch
+BuildSystem:	python
 BuildRequires:	python%{pyver}dist(setuptools)
-BuildRequires:	python-pkg-resources
-BuildRequires:	python%{pyver}dist(pytz)
-Requires:       python-pytz
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(wheel)
 
 %description
 Babel is a Python library that provides an integrated collection of
 utilities that assist with internationalizing and localizing Python
 applications (in particular web-based applications.)
 
-%prep
-%autosetup -p1 -n %{tarname}-%{version}
-mkdir cldr
-ln -s %{SOURCE1} cldr/cldr-common-%{cldrversion}.zip
-ln -s %{SOURCE1} cldr/cldr-common-%{cldrversion}.0.zip
+%prep -a
+# The sdist already contains the imported CLDR data.
+rm -rf babel.egg-info
 
-%install
-sed -i -e 's,getiterator,iter,g;s,\.getchildren(),,g' scripts/import_cldr.py
-%{__python} setup.py import_cldr
-%{__python} setup.py install --root=%{buildroot}
-
-%files -n python-babel
-%doc docs/
+%files
+%doc README.rst CHANGES.rst docs/
+%license LICENSE
 %{_bindir}/pybabel
-%{python_sitelib}/babel/*
-%{python_sitelib}/*.egg-info
+%{python_sitelib}/babel
+%{python_sitelib}/babel-%{version}.dist-info
